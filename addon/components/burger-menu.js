@@ -96,7 +96,10 @@ export default Component.extend(DomMixin, SwipeSupportMixin, {
     let nativeEvent = normalizeEvent(e);
     let elementId = this.get('elementId');
     // Close the menu if clicked outside of it
-    if (!closest(nativeEvent.target, `#${elementId} .bm-menu`, true)) {
+    if (
+      nativeEvent.target.id !== 'burger-link' &&
+      !closest(nativeEvent.target, `#${elementId} .bm-menu`, true)
+    ) {
       this.get('state.actions').close();
     }
   },
